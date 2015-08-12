@@ -8,11 +8,11 @@ def makeSoup(url):
 	return soup
 
 def writeFile(links, num_of_articles, file_name, title):
-	doc_start = '<!DOCTYPE html><html><body><div style="padding: 20px;">'
+	doc_start = '<div>'
 	heading = '<h2>'+title+'</h2>'
 	list_open = '<ol>'
 	list_close = '</ol>'
-	doc_end = '</div></body></html>'
+	doc_end = '</div>'
 	document = open(file_name, 'w')
 	document.truncate()
 	document.write(doc_start)
@@ -72,8 +72,6 @@ def createConeryLinks():
 	links = heading_soup.findAll('a')
 
 	writeFile(links, 10, 'rc.html', "Rob Conery's Last 10 Posts")
-
-
 
 
 createHackerNewsLinks()
