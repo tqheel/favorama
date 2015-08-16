@@ -13,13 +13,13 @@ def writeFile(links, num_of_articles, file_name, title):
 	list_open = '<ol>'
 	list_close = '</ol>'
 	doc_end = '</div>'
-	document = open(file_name, 'w')
+	document = open(file_name, 'w', encoding='windows-1252')
 	document.truncate()
 	document.write(doc_start)
 	document.write(heading)
 	document.write(list_open)
 	for i in range(0, num_of_articles):
-		print (str(links[i]).encode('UTF-8'))
+		print (str(links[i]).encode('utf8'))
 		document.write('<li>'+str(links[i])+'</li>')
 	document.write(list_close)
 	document.write(doc_end)
