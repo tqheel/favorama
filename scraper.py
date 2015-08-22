@@ -13,7 +13,7 @@ def writeFile(links, num_of_articles, file_name, title):
 	list_open = '<ol>'
 	list_close = '</ol>'
 	doc_end = '</div>'
-	document = open(file_name, 'w', encoding='ascii')
+	document = open(file_name, 'w', encoding='utf8')
 	document.truncate()
 	document.write(doc_start)
 	document.write(heading)
@@ -56,39 +56,7 @@ def createHanselmanLinks():
 
 	writeFile(links, 5, 'sh.html',"Scott Hanselman's Last 5 Posts")
 
-def createConeryLinks():
-	url = "http://rob.conery.io/"
-
-	soup = makeSoup(url)
-
-	post_listing = soup.findAll('section', attrs={'class':'post-listing'})
-
-	articles = post_listing[0].findAll('article',attrs={'class':'post'})
-
-	article_soup = BeautifulSoup(str(articles), "html.parser")
-
-	post_contents = soup.findAll('div',attrs={'class':'post-content'})
-
-	post_contents_soup = BeautifulSoup(str(post_contents), "html.parser")
-
-	headings = post_contents_soup.findAll('h2')
-
-	heading_soup = BeautifulSoup(str(headings), "html.parser")
-
-	links = heading_soup.findAll('a')
-
-	# for li in links:
-	# 	print(str(li))
-
-	# for heading in headings:
-	# 	print(str(heading))
-
-	# for pl in post_listing:
-	# 	print(str(pl.prettify('utf8')))
-
-	# writeFile(links, 10, 'rc.html', "Rob Conery's Last 10 Posts")
-
 
 createHackerNewsLinks()
 createHanselmanLinks()
-# createConeryLinks()
+
