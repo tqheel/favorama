@@ -56,7 +56,21 @@ def createHanselmanLinks():
 
 	writeFile(links, 5, 'sh.html',"Scott Hanselman's Last 5 Posts")
 
+def createCodingHorrorLinks():
+	url = "http://blog.codinghorror.com"
+
+	soup = makeSoup(url)
+
+	headings = soup.findAll('h2',attrs={'class':'post-title'})
+
+	heading_soup = BeautifulSoup(str(headings), "html.parser")
+
+	links = heading_soup.findAll('a')
+
+	writeFile(links, 5, 'ch.html',"Jeff Atwood's Last 5 Posts")
+
 
 createHackerNewsLinks()
 createHanselmanLinks()
+createCodingHorrorLinks()
 
