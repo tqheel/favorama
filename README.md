@@ -1,12 +1,10 @@
 # favorama
-A Python 3.4 script for scraping some links from my favorite sites.
+A Python 3.4 script for scraping some article links from some of my favorite blogs, using Beautiful Soup 4.
 
 ### Current Favorites that this script knows how to scrape:
 - Hacker News
 - Scott Hanselman's Blog
-- Rob Conery's Blog
-
-Staty tuned, more to come...
+- Jeff Atwood's Blog (Coding Horror)
 
 ### Dependencies
 - Beautiful Soup 4
