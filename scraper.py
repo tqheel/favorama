@@ -10,7 +10,7 @@ def makeSoup(url):
 def writeFile(links, num_of_articles, file_name, title):
 	doc_start = '<div>'
 	heading = '<h2>'+title+'</h2>'
-	list_open = '<ol>'
+	list_open = '<ol class="list-group">'
 	list_close = '</ol>'
 	doc_end = '</div>'
 	document = open(file_name, 'w', encoding='utf8')
@@ -20,7 +20,7 @@ def writeFile(links, num_of_articles, file_name, title):
 	document.write(list_open)
 	for i in range(0, num_of_articles):
 		print (str(links[i]).encode('utf8'))
-		document.write('<li>'+str(links[i].prettify(formatter="html"))+'</li>')
+		document.write('<li class="list-group-item">'+str(links[i].prettify(formatter="html"))+'</li>')
 	document.write(list_close)
 	document.write(doc_end)
 	document.close()
