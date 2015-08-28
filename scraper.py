@@ -1,9 +1,15 @@
 # for py 3.4
 from bs4 import BeautifulSoup
 import requests
+from selenium import webdriver
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 
 def makeSoup(url):
-	request = requests.get(url)
+	headers = {'User-Agent': 'Chrome/39.0.2171.95'}
+	request = requests.get(url, headers=headers)
 	soup = BeautifulSoup(request.text, "html.parser")
 	return soup
 
@@ -69,8 +75,43 @@ def createCodingHorrorLinks():
 
 	writeFile(links, 5, 'ch.html',"Jeff Atwood's Last 5 Posts")
 
+def createNasaLinks():
+	url = "http://www.nasa.gov"
+
+	browser = webdriver.Chrome()
+	browser.get(url)
+	html_source = browser.page_source
+	browser.quit()
+
+	soup = BeautifulSoup(html_source, "html.parser")
+
+	headings = soup.findAll('div',attrs={'id':'content'})
+
+	heading_soup = BeautifulSoup(str(headings), "html.parser")
+
+	tags = soup.findAll('div',attrs={'class':'tag'})
+
+	tag_soup = BeautifulSoup(str(tags), "html.parser")
+
+	links = tag_soup.findAll('a')
+
+	numLinks = len(links)
+
+	writeFile(links, numLinks, 'nasa.html',"NASA Home Page Highlights")
+
+	# fix NASA local relative links
+	document = open('nasa.html', 'r', encoding='utf8')
+	contents = document.read()
+	document.close()
+	contents = contents.replace('href="/', 'href="http://www.nasa.gov/')
+	document = open('nasa.html', 'w', encoding='utf8')
+	document.truncate()
+	document.write(contents)
+	document.close()
+
 
 createHackerNewsLinks()
 createHanselmanLinks()
 createCodingHorrorLinks()
+createNasaLinks()
 

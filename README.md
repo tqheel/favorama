@@ -5,9 +5,11 @@ A Python 3.4 script for scraping some article links from some of my favorite blo
 - Hacker News
 - Scott Hanselman's Blog
 - Jeff Atwood's Blog (Coding Horror)
+- NASA's Current Home Page Features
 
-### Dependencies
+### Python Dependencies
 - Beautiful Soup 4
 - requests
+- selenium (along with the Chromewebdriver binary added to your Python installation's "scripts" directory)
 
 
