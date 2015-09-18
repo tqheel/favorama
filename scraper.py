@@ -86,6 +86,16 @@ def createCodingHorrorLinks():
 
 	writeFile(links, 5, 'ch.html',"Jeff Atwood's Last 5 Posts")
 
+	# fix local relative links
+	document = open('ch.html', 'r', encoding='utf8')
+	contents = document.read()
+	document.close()
+	contents = contents.replace('href="/', 'href="http://blog.codinghorror.com/')
+	document = open('ch.html', 'w', encoding='utf8')
+	document.truncate()
+	document.write(contents)
+	document.close()
+
 def createNasaLinks():
 	url = "http://www.nasa.gov"
 
