@@ -5,6 +5,7 @@ from selenium import webdriver
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import re
 
 
 def makeSoup(url):
@@ -45,9 +46,19 @@ def createHackerNewsLinks():
 	title_soup = BeautifulSoup(str(titles), "html.parser")
 
 	links = title_soup.findAll('a')
+
+	exclusion = r"from\?site"
+
+	cleanedList = []
+
+	for link in links:
+		match = re.search(exclusion, str(link))
+		if not match:
+			cleanedList.append(link)
+
 	#TODO: Need to inspect each link and prefix link with full domain name if link is an internal only link
 
-	writeFile(links, 10, 'hn.html', 'Hacker News Top 10 Articles')
+	writeFile(cleanedList, 10, 'hn.html', 'Hacker News Top 10 Articles')
 
 def createHanselmanLinks():
 	url = "http://www.hanselman.com/blog/"
