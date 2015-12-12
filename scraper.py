@@ -96,6 +96,26 @@ def createCodingHorrorLinks():
 	document.write(contents)
 	document.close()
 
+
+def createDbtTourDates():
+	url = "http://www.drivebytruckers.com/shows.html"
+
+	soup = makeSoup(url)
+
+	table = soup.find('table',attrs={'id':'background-image'})
+
+	file_name = 'dbt.html'
+	doc_start = '<div>'
+	heading = '<h2>Drive-By Truckers Tour Dates</h2>'
+	doc_end = '</div>'
+	document = open(file_name, 'w', encoding='utf8')
+	document.truncate()
+	document.write(doc_start)
+	document.write(heading)
+	document.write(str(table.prettify(formatter="html")))
+	document.write(doc_end)
+	document.close()
+
 def createNasaLinks():
 	url = "http://www.nasa.gov"
 
@@ -131,8 +151,11 @@ def createNasaLinks():
 	document.close()
 
 
+
+
 createHackerNewsLinks()
 createHanselmanLinks()
 createCodingHorrorLinks()
 createNasaLinks()
+createDbtTourDates()
 
