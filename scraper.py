@@ -163,7 +163,7 @@ def createSpaceXLinks():
 
 	numLinks = len(links)
 
-	writeFile(links, numLinks, 'spacex.html',"Space X News")
+	writeFile(links, numLinks, 'spacex.html',"SpaceX News")
 
 
 createHackerNewsLinks()
