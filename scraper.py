@@ -150,7 +150,20 @@ def createNasaLinks():
 	document.write(contents)
 	document.close()
 
+def createSpaceXLinks():
+	url = "http://www.spacex.com/news"
 
+	soup = makeSoup(url)
+
+	headings = soup.findAll('h2',attrs={'class':'title'})
+
+	heading_soup = BeautifulSoup(str(headings), "html.parser")
+
+	links = heading_soup.findAll('a')
+
+	numLinks = len(links)
+
+	writeFile(links, numLinks, 'spacex.html',"Space X News")
 
 
 createHackerNewsLinks()
@@ -158,4 +171,4 @@ createHanselmanLinks()
 createCodingHorrorLinks()
 createNasaLinks()
 createDbtTourDates()
-
+createSpaceXLinks()
