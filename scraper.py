@@ -92,20 +92,6 @@ def createCodingHorrorLinks():
 	document.write(contents)
 	document.close()
 
-
-
-
-
-	# fix NASA local relative links
-	document = open('nasa.html', 'r', encoding='utf8')
-	contents = document.read()
-	document.close()
-	contents = contents.replace('href="/', 'href="http://www.nasa.gov/')
-	document = open('nasa.html', 'w', encoding='utf8')
-	document.truncate()
-	document.write(contents)
-	document.close()
-
 def createSpaceXLinks():
 	url = "http://www.spacex.com/news"
 
