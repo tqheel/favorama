@@ -169,6 +169,6 @@ def createSpaceXLinks():
 createHackerNewsLinks()
 createHanselmanLinks()
 createCodingHorrorLinks()
-createNasaLinks()
-createDbtTourDates()
+# createNasaLinks()
+# createDbtTourDates()
 createSpaceXLinks()
