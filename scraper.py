@@ -1,10 +1,6 @@
 # for py 3.4
 from bs4 import BeautifulSoup
 import requests
-from selenium import webdriver
-from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 import re
 
 
