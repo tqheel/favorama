@@ -43,6 +43,11 @@ def createHackerNewsLinks():
 
 	links = title_soup.findAll('a')
 
+	for link in links:
+		href = link['href']
+		if href.startswith('i'):
+			link['href'] = 'https://news.ycombinator.com/' + href
+
 	exclusion = r"from\?site"
 
 	cleanedList = []
@@ -54,7 +59,9 @@ def createHackerNewsLinks():
 
 	#TODO: Need to inspect each link and prefix link with full domain name if link is an internal only link
 
-	writeFile(cleanedList, 10, 'hn.html', 'Hacker News Top 10 Articles')
+
+
+	writeFile(cleanedList, 30, 'hn.html', 'Hacker News Top 10 Articles')
 
 def createHanselmanLinks():
 	url = "http://www.hanselman.com/blog/"
