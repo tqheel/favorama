@@ -1,8 +1,8 @@
 # for py 3.4
 from bs4 import BeautifulSoup
 import requests
+import datetime
 import re
-
 
 def makeSoup(url):
 	headers = {'User-Agent': 'Chrome/39.0.2171.95'}
@@ -13,6 +13,7 @@ def makeSoup(url):
 def writeFile(links, num_of_articles, file_name, title):
 	doc_start = '<div>'
 	heading = '<h2>'+title+'</h2>'
+	timestamp = '<h3>' + str(datetime.datetime.now())[:16] + '</h3>'
 	list_open = '<ol class="list-group">'
 	list_close = '</ol>'
 	doc_end = '</div>'
@@ -20,6 +21,7 @@ def writeFile(links, num_of_articles, file_name, title):
 	document.truncate()
 	document.write(doc_start)
 	document.write(heading)
+	document.write(timestamp)
 	document.write(list_open)
 	for i in range(0, num_of_articles):
 		print (str(links[i]).encode('utf8'))
@@ -56,10 +58,6 @@ def createHackerNewsLinks():
 		match = re.search(exclusion, str(link))
 		if not match:
 			cleanedList.append(link)
-
-	#TODO: Need to inspect each link and prefix link with full domain name if link is an internal only link
-
-
 
 	writeFile(cleanedList, 30, 'hn.html', 'Hacker News Top 10 Articles')
 
