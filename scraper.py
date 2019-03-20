@@ -13,7 +13,7 @@ def makeSoup(url):
 def writeFile(links, num_of_articles, file_name, title):
 	doc_start = '<div>'
 	heading = '<h2>'+title+'</h2>'
-	timestamp = '<h3>Updated ' + str(datetime.datetime.now())[:16] + ' US Eastern Time</h3>'
+	timestamp = '<h3>Updated ' + str(datetime.datetime.now())[:16] + ' UTC</h3>'
 	list_open = '<ol class="list-group">'
 	list_close = '</ol>'
 	doc_end = '</div>'
