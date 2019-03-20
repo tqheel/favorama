@@ -59,7 +59,7 @@ def createHackerNewsLinks():
 		if not match:
 			cleanedList.append(link)
 
-	writeFile(cleanedList, 30, 'hn.html', 'Hacker News Top 10 Articles')
+	writeFile(cleanedList, 20, 'hn.html', 'Hacker News Top 20 Articles')
 
 def createHanselmanLinks():
 	url = "http://www.hanselman.com/blog/"
